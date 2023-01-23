@@ -2,7 +2,7 @@ const apiKey = '20af441b60a31762e228b7f3d4eae566';
 const searchVal = document.querySelector('input');
 const searchBtn = document.querySelector('#search-button');
 const currentEl = document.querySelector('#current');
-const currentEl1 = document.querySelector('#current1');
+const currentTemp = document.querySelector('#currentTemp');
 const iconEl = document.querySelector('#icon');
 
 function handleSearchSubmit() {
@@ -27,7 +27,7 @@ function fetchCurrentWeather(city) {
 }
 
 function displayCurrentWeather(data) {
-    //currentEl.textContent = data.main.temp;
+    currentTemp.textContent = data.main.temp;
     //finish, add city name
 }
 

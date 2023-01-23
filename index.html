@@ -5,17 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/style.css" />
     <title>Document</title>
 </head>
 
 <body>
+    <header class="header">
+        Weather Dashboard
+    </header>
     <p id="#currentDay" class="day"></p>
     <input />
     <button id="search-button">Search for city</button>
-    <section id="current"></section>
-    <section id="current1" class="d-flex"></section>
+    <section id="currentTemp"></section>
+    <section id="current" class="bg-warning d-flex m-10"></section>
+    
+
+    <!--<section id="current1" class="bg-warning"></section>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
         integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
         crossorigin="anonymous"></script>

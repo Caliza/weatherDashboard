@@ -1,3 +1,14 @@
-.header{
-    font-size: 24px;
+.header {
+    display: flex;
+    background-image: linear-gradient(to left, rgb(3, 44, 106), rgb(70, 164, 247));
+    font-size: 3.5em;
+    height: 3em;
+}
+.header2 {
+    color: antiquewhite;
+    margin: auto;
+}
+#currentWx {
+    border:3px solid;
+    border-radius: 8px;
 }

@@ -3,6 +3,8 @@ const searchVal = document.querySelector('input');
 const searchBtn = document.querySelector('#search-button');
 const currentEl = document.querySelector('#current');
 const currentTemp = document.querySelector('#currentTemp');
+const currentHmd = document.querySelector('#currentHmd');
+const currentWind = document.querySelector('#currentWind');
 const iconEl = document.querySelector('#icon');
 
 function handleSearchSubmit() {
@@ -27,7 +29,9 @@ function fetchCurrentWeather(city) {
 }
 
 function displayCurrentWeather(data) {
-    currentTemp.textContent = data.main.temp;
+    currentTemp.textContent = 'Temp: '+data.main.temp+'° F';
+    currentHmd.textContent = 'Humidity: '+data.main.humidity+'%';
+    currentWind.textContent = 'Wind: '+data.wind.speed+' MPH';
     //finish, add city name
 }
 
@@ -45,8 +49,8 @@ function fetchCurrentForecast(lat, lon) {
 function displayCurrentForecast(data) {
     for (let index = 3; index < data.list.length; index += 8) {
         let card = document.createElement('div');
-        let cardHeader = document.createElement('div');
-        let cardBody = document.createElement('div');
+        let cardHeader = document.createElement('ul');
+        let cardBody = document.createElement('ul');
         let dateEl = document.createElement('h3');
         let iconUrl = `https://openweathermap.org/img/w/${data.list[index].weather[0].icon}.png`;
         let icon = document.createElement('img')

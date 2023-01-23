@@ -47,6 +47,7 @@ function fetchCurrentForecast(lat, lon) {
 }
 
 function displayCurrentForecast(data) {
+    currentEl=innerHTML = ''
     for (let index = 3; index < data.list.length; index += 8) {
         let card = document.createElement('div');
         let cardHeader = document.createElement('ul');

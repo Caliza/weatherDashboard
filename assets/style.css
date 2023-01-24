@@ -4,13 +4,32 @@
     font-size: 3.5em;
     height: 3em;
 }
+
 .header2 {
     color: antiquewhite;
     margin: auto;
 }
+
+#city {
+font-size: 2em;
+}
+
+#current {
+    float: right;
+    width: 70%;
+    border:3px solid;
+    border-radius: 8px;
+    margin: 10px;
+}
+
 #currentWx {
     border:3px solid;
     border-radius: 8px;
+    float: right;
     padding: 10px;
     margin: 10px;
+    width: 70%;
+}
+#display {
+    display: flex;
 }

@@ -108,7 +108,7 @@ function loadSearch() {
     }
     searchHistory.forEach(e => {
         const cityBtn = document.createElement('button')
-        //cityBtn.addClass('')
+        cityBtn.classList.add('historyBtns')
         cityBtn.textContent = e
         historyEl.append(cityBtn)
     })

@@ -27,25 +27,30 @@
     width: 200px;
 }
 
+.w-x {
+    width: 18%;
+}
+
 #city {
-font-size: 2em;
+    font-size: 2em;
 }
 
 #current {
-    float: right;
-    width: 70%;
-    border:3px solid;
+    border: 3px solid;
     border-radius: 8px;
+    float: right;
     margin: 10px;
+    width: 85%;
 }
 
 #currentWx {
-    border:3px solid;
+    border: 3px solid;
     border-radius: 8px;
     float: right;
-    padding: 10px;
+    height: fit-content;
     margin: 10px;
-    width: 70%;
+    padding: 10px;
+    width: 85%;
 }
 
 #display {
@@ -53,8 +58,12 @@ font-size: 2em;
 }
 
 #history {
-    /* margin: auto; */
+    margin: center;
     width: 25%;
+}
+
+#main {
+    display: flex;
 }
 
 #section1 {

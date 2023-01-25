@@ -63,9 +63,9 @@ function displayCurrentForecast(data) {
     currentEl.innerHTML = ''
     for (let index = 3; index < data.list.length; index += 8) {
         let card = document.createElement('div');
-        card.classList.add('card', 'col-2', 'm-2', 'bg-light');
-        let cardHeader = document.createElement('ul');
-        let cardBody = document.createElement('ul');
+        card.classList.add('card', 'col-2', 'm-2', 'bg-light', 'w-x');
+        let cardHeader = document.createElement('div');
+        let cardBody = document.createElement('div');
         let dateEl = document.createElement('h3');
         let iconUrl = `https://openweathermap.org/img/w/${data.list[index].weather[0].icon}.png`;
         let icon = document.createElement('img')

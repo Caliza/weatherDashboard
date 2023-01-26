@@ -1,6 +1,7 @@
 const apiKey = '20af441b60a31762e228b7f3d4eae566';
 const searchVal = document.querySelector('input');
 const searchBtn = document.querySelector('#search-button');
+const clearBtn = document.querySelector('#clear-button');
 const cityEl = document.querySelector('#city');
 const currentEl = document.querySelector('#current');
 const currentTemp = document.querySelector('#currentTemp');
@@ -145,10 +146,22 @@ function loadSearch() {
     })
 }
 
+function clearHistory(event) {
+    event.preventDefault()
+    historyEl.textContent = ''
+    let searchHistory = localStorage.getItem('history') || []
+    if (searchHistory.length > 0) {
+        searchHistory = JSON.parse(searchHistory)
+    }
+    searchHistory = []
+    localStorage.setItem('history', JSON.stringify(searchHistory))
+    loadSearch()
+}
+
 loadSearch()
 
 historyEl.addEventListener('click', handleHistorySubmit)
 
-
 searchBtn.addEventListener('click', handleSearchSubmit);
 
+clearBtn.addEventListener('click', clearHistory);

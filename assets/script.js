@@ -18,7 +18,7 @@ function handleSearchSubmit() {
     }
     let city = searchVal.value; 
     fetchCurrentWeather(city)
-    saveSearch(city)
+    // saveSearch(city)
 }
 
 function handleHistorySubmit(event) {
@@ -35,11 +35,15 @@ function fetchCurrentWeather(city) {
     let apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`;
     fetch(apiUrlWeather).then(function (response) {
         console.log(response);
+        if (response.status == 404) {
+            alert('City not found with that name!')
+        }
         return response.json()
     }).then(function (data) {
         //console.log(data);
         displayCurrentWeather(data)
         fetchCurrentForecast(data.coord.lat, data.coord.lon)
+        saveSearch(city)
     })
 }
 

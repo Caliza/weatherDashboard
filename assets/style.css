@@ -1,5 +1,17 @@
+input {
+    font-size: 24px;
+    height: 45px;
+    margin: 5px 0 5px 100px;
+    width: 250px;
+}
+
 .body {
     display: flex;
+}
+
+.day {
+    font-size: 30px;
+    margin: 10px 0 8px 100px;
 }
 
 .header {
@@ -11,35 +23,44 @@
 }
 
 .header2 {
-    color: antiquewhite;
+    color: azure;
     margin: auto;
 }
+
+
 
 .historyBtns {
     align-items: center;
     background-color: rgb(76, 111, 141);
     border-radius: 4px;
     display: flex;
-    margin: auto;
-    /* margin: 5px 0 5px 0; */
-    height: 40px;
+    font-size: 24px;
+    height: 50px;
     justify-content: center;
-    width: 200px;
+    margin: 5px 0 5px 100px;
+    width: 250px;
 }
 
 .w-x {
     width: 18%;
 }
 
+#break-line {
+    font: bold;
+    margin: 5px 0 5px 100px;
+
+}
+
 #city {
     font-size: 2em;
+    padding: 10px;
 }
 
 #current {
     border: 3px solid;
     border-radius: 8px;
     float: right;
-    margin: 10px;
+    margin: 10px 80px;
     width: 85%;
 }
 
@@ -48,9 +69,14 @@
     border-radius: 8px;
     float: right;
     height: fit-content;
-    margin: 10px;
+    margin: 10px 80px;
     padding: 10px;
     width: 85%;
+}
+
+#date {
+    font-size: 2em;
+    padding: 10px;
 }
 
 #display {
@@ -58,15 +84,30 @@
 }
 
 #history {
-    margin: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
     width: 25%;
 }
 
 #main {
     display: flex;
+
+}
+
+#search-button {
+    background-color: rgb(76, 111, 141);
+    border-radius: 4px;
+    color: azure;
+    display: block;
+    font-size: 24px;
+    height: 50px;
+    margin: 5px 0 5px 100px;
+    width: 250px;
 }
 
 #section1 {
+    margin: 0 auto;
     width: 30vw;
 }
 

@@ -6,14 +6,17 @@ const currentEl = document.querySelector('#current');
 const currentTemp = document.querySelector('#currentTemp');
 const currentHmd = document.querySelector('#currentHmd');
 const currentWind = document.querySelector('#currentWind');
+const currentDateEl = document.querySelector('#date');
 const iconEl = document.querySelector('#icon');
+const imgEl = document.querySelector('img');
 const historyEl = document.querySelector('#history');
 
+//Handles user's input (city) and sets it as a parameter in fnc. fetchCurrentWeather and saveSearch.
 function handleSearchSubmit() {
     if (!searchVal.value) {
         return
     }
-    let city = searchVal.value;
+    let city = searchVal.value; 
     fetchCurrentWeather(city)
     saveSearch(city)
 }
@@ -27,6 +30,7 @@ function handleHistorySubmit(event) {
     fetchCurrentWeather(city)
 }
 
+//Fetches api and passes data to fnc. displayCurrentWeather and fetchCurrentForecast.
 function fetchCurrentWeather(city) {
     let apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`;
     fetch(apiUrlWeather).then(function (response) {
@@ -39,15 +43,20 @@ function fetchCurrentWeather(city) {
     })
 }
 
+//Displays current weather to browser.
 function displayCurrentWeather(data) {
     console.log(data);
     cityEl.textContent = data.name
+    currentDateEl.textContent = dayjs.unix(data.dt).format('M/D/YYYY')
+    let iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    imgEl.setAttribute('src', iconUrl); 
     currentTemp.textContent = 'Temp: ' + data.main.temp + '° F';
     currentHmd.textContent = 'Humidity: ' + data.main.humidity + '%';
     currentWind.textContent = 'Wind: ' + data.wind.speed + ' MPH';
     //finish, add city name
 }
 
+//Fetches api and passes data to fnc. displayCurrentForecast.
 function fetchCurrentForecast(lat, lon) {
     let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
     fetch(apiUrlForecast).then(function (response) {
@@ -59,11 +68,12 @@ function fetchCurrentForecast(lat, lon) {
     })
 }
 
+//Displays 5 day forecast to browser.
 function displayCurrentForecast(data) {
     currentEl.innerHTML = ''
-    for (let index = 3; index < data.list.length; index += 8) {
+    for (let index = 5; index < data.list.length; index += 8) {
         let card = document.createElement('div');
-        card.classList.add('card', 'col-2', 'm-2', 'bg-light', 'w-x');
+        card.classList.add('card', 'col-2', 'm-2', 'bg-light', 'w-x', 'ps-2');
         let cardHeader = document.createElement('div');
         let cardBody = document.createElement('div');
         let dateEl = document.createElement('h3');
@@ -84,6 +94,7 @@ function displayCurrentForecast(data) {
     }
 }
 
+//Pulls and saves previous search to localStorage.
 function saveSearch(city) {
     let searchHistory = localStorage.getItem('history') || []
     if (searchHistory.length > 0) {
@@ -93,13 +104,14 @@ function saveSearch(city) {
         return
     }
     searchHistory.push(city)
-    if (searchHistory.length > 4) {
+    if (searchHistory.length > 8) {
         searchHistory.shift()
     }
     localStorage.setItem('history', JSON.stringify(searchHistory))
     loadSearch()
 }
 
+//Gets and loads previous search from localStorage and creates past-search buttons.
 function loadSearch() {
     historyEl.textContent = ''
     let searchHistory = localStorage.getItem('history') || []
@@ -120,3 +132,17 @@ historyEl.addEventListener('click',  handleHistorySubmit)
 
 
 searchBtn.addEventListener('click', handleSearchSubmit);
+
+// city = function capitalizeFirstLetter(city) {
+//     let tempArr = city.split(' ')
+//     let res = []
+//     tempArr.forEach((cityName) => {
+//       let capitalChar = cityName.split('', 1)[0].toUpperCase()
+//       let cityRemaining = cityName.substring('1')
+  
+//       cityName = capitalChar += cityRemaining
+//       res.push(cityName)
+//     })
+  
+//     return res.join(' ')
+//   }

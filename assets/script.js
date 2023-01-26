@@ -16,9 +16,24 @@ function handleSearchSubmit() {
     if (!searchVal.value) {
         return
     }
-    let city = searchVal.value; 
+    let city = searchVal.value;
+    city = capitalizeFirstLetter(city)
     fetchCurrentWeather(city)
     // saveSearch(city)
+}
+
+//Capitalizes first letter of each word in city's name.
+function capitalizeFirstLetter(city) {
+    let tempArr = city.split(' ')
+    let res = []
+    tempArr.forEach((cityName) => {
+        let capitalChar = cityName.split('', 1)[0].toUpperCase()
+        let cityRemaining = cityName.substring('1')
+
+        cityName = capitalChar += cityRemaining
+        res.push(cityName)
+    })
+    return res.join(' ')
 }
 
 function handleHistorySubmit(event) {
@@ -26,7 +41,7 @@ function handleHistorySubmit(event) {
     console.log('event');
     console.log(this);
     console.log(event.target.innerHTML);
-    let city = event.target.innerHTML;
+    let city = event.target.innerHTML;   
     fetchCurrentWeather(city)
 }
 
@@ -53,7 +68,7 @@ function displayCurrentWeather(data) {
     cityEl.textContent = data.name
     currentDateEl.textContent = dayjs.unix(data.dt).format('M/D/YYYY')
     let iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-    imgEl.setAttribute('src', iconUrl); 
+    imgEl.setAttribute('src', iconUrl);
     currentTemp.textContent = 'Temp: ' + data.main.temp + '° F';
     currentHmd.textContent = 'Humidity: ' + data.main.humidity + '%';
     currentWind.textContent = 'Wind: ' + data.wind.speed + ' MPH';
@@ -132,21 +147,8 @@ function loadSearch() {
 
 loadSearch()
 
-historyEl.addEventListener('click',  handleHistorySubmit)
+historyEl.addEventListener('click', handleHistorySubmit)
 
 
 searchBtn.addEventListener('click', handleSearchSubmit);
 
-// city = function capitalizeFirstLetter(city) {
-//     let tempArr = city.split(' ')
-//     let res = []
-//     tempArr.forEach((cityName) => {
-//       let capitalChar = cityName.split('', 1)[0].toUpperCase()
-//       let cityRemaining = cityName.substring('1')
-  
-//       cityName = capitalChar += cityRemaining
-//       res.push(cityName)
-//     })
-  
-//     return res.join(' ')
-//   }
